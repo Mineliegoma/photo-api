@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Photo.destroy_all
+Comment.destroy_all
+
+
 photos = [
        {
         name: "zozo",
@@ -34,6 +37,11 @@ photos = [
        }
 
 ]
-photos.each do |movie|
- Photo.create!(movie)
+photos.each do |photo_hash|
+ photo = Photo.create!(photo_hash)
+
+
+ comments_1 = Comment.create(name: "gori", text: "cutest dog", photo_id: photo.id)
+ 
+
 end

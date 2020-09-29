@@ -13,6 +13,17 @@ def create
  photo = Photo.create!(photo_params)
  render json: photo
 end 
+# def show
+#  photo = Photo.find(params[:id])
+#  render json: photo
+# end 
+
+
+def destroy
+photo = Photo.find(params[:id])
+photo.destroy
+render json: { }
+end
 
 
 private
