@@ -17,6 +17,17 @@ end
 #  photo = Photo.find(params[:id])
 #  render json: photo
 # end 
+def show
+        photo=Photo.find_by(id: params[:id])
+        if photo
+            # render json: member.to_json(include: [:transactions, :currencies])
+            render json: photo.to_json(:include => {
+                :comments => {:except => [:created_at, :updated_at]}
+            }, :except => [:created_at,:updated_at])
+        else
+            render json: { message: 'photo not found' }
+        end
+    end
 
 
 def destroy
